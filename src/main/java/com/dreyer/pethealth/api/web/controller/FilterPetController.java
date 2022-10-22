@@ -35,8 +35,8 @@ public class FilterPetController {
         var request = FilterPetRequestModel.builder()
                 .userId(userId)
                 .petName(petName)
-                .page(page)
-                .itemPerPage(itemPerPage)
+                .pageIndex(page)
+                .pageSize(itemPerPage)
                 .build();
 
         filterPetService.execute(request);

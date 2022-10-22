@@ -1,5 +1,7 @@
 package com.dreyer.pethealth.api.core.usecase;
 
+import com.dreyer.pethealth.api.common.boundary.responsemodel.ErrorResponseModel;
+import com.dreyer.pethealth.api.common.errorcode.CommonErrorCode;
 import com.dreyer.pethealth.api.common.validator.BaseRequestValidator;
 import com.dreyer.pethealth.api.core.boundary.input.FilterPetInput;
 import com.dreyer.pethealth.api.core.boundary.output.FilterPetOutput;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
@@ -33,14 +36,28 @@ public class FilterPetUseCase implements FilterPetInput {
     public void execute(FilterPetRequestModel requestModel) {
         var errorsResponseModel = BaseRequestValidator.validate(requestModel);
 
+        if (Objects.isNull(requestModel.getPageIndex()) || requestModel.getPageIndex() < 0) {
+            errorsResponseModel.add(ErrorResponseModel.builder()
+                    .code(CommonErrorCode.E0006.name())
+                    .message(CommonErrorCode.E0006.getValue())
+                    .build());
+        }
+
+        if(Objects.isNull(requestModel.getPageSize()) || requestModel.getPageSize() < 1) {
+            errorsResponseModel.add(ErrorResponseModel.builder()
+                    .code(CommonErrorCode.E0007.name())
+                    .message(CommonErrorCode.E0007.getValue())
+                    .build());
+        }
+
         if(!errorsResponseModel.isEmpty()) {
             filterPetOutput.error(errorsResponseModel);
             return;
         }
 
         Pageable pageable = PageRequest.of(
-                requestModel.getPage(),
-                requestModel.getItemPerPage()
+                requestModel.getPageIndex(),
+                requestModel.getPageSize()
         );
 
         var petList = filterPetGateway.findAll(

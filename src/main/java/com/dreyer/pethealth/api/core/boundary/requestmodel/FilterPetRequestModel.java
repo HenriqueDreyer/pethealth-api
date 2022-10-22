@@ -12,6 +12,6 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class FilterPetRequestModel extends BaseRequestModel {
     String petName;
-    Integer page;
-    Integer itemPerPage;
+    Integer pageIndex;
+    Integer pageSize;
 }
