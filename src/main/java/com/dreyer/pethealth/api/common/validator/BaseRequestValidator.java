@@ -23,14 +23,14 @@ public class BaseRequestValidator {
             );
         }
 
-        if(Objects.isNull(requestModel.getRequestId())) {
-            baseRequestModelValidations.add(
-                    ErrorResponseModel.builder()
-                            .code(CommonErrorCode.E0005.name())
-                            .message(CommonErrorCode.E0005.getValue())
-                            .build()
-            );
-        }
+//        if(Objects.isNull(requestModel.getRequestId())) {
+//            baseRequestModelValidations.add(
+//                    ErrorResponseModel.builder()
+//                            .code(CommonErrorCode.E0005.name())
+//                            .message(CommonErrorCode.E0005.getValue())
+//                            .build()
+//            );
+//        }
 
         if(Objects.isNull(requestModel.getUserId())) {
             baseRequestModelValidations.add(
@@ -41,14 +41,14 @@ public class BaseRequestValidator {
             );
         }
 
-        if(Objects.isNull(requestModel.getLocale())) {
-            baseRequestModelValidations.add(
-                    ErrorResponseModel.builder()
-                            .code(CommonErrorCode.E0003.name())
-                            .message(CommonErrorCode.E0003.getValue())
-                            .build()
-            );
-        }
+//        if(Objects.isNull(requestModel.getLocale())) {
+//            baseRequestModelValidations.add(
+//                    ErrorResponseModel.builder()
+//                            .code(CommonErrorCode.E0003.name())
+//                            .message(CommonErrorCode.E0003.getValue())
+//                            .build()
+//            );
+//        }
 
         return baseRequestModelValidations;
     }
