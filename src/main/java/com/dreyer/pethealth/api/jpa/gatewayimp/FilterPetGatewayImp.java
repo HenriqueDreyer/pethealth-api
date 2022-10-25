@@ -24,17 +24,17 @@ public class FilterPetGatewayImp implements FilterPetGateway {
     }
 
     @Override
-    public List<Pet> findByName(Long userId, String petName) {
+    public List<Pet> findByName(String userId, String petName) {
         return Collections.emptyList();
     }
 
     @Override
-    public List<Pet> findByUser(Long userId) {
+    public List<Pet> findByUser(String userId) {
         return Collections.emptyList();
     }
 
     @Override
-    public List<Pet> findAll(Pageable pageable, Long userId) {
+    public List<Pet> findAll(Pageable pageable, String userId) {
         Page<PetEntity> allPetsPage = filterPetEntityRepository.findAll(pageable);
 
         return  allPetsPage.stream()

@@ -13,6 +13,6 @@ import java.util.Locale;
 @ToString
 public class BaseRequestModel {
     private final String requestId;
-    private final Long userId;
+    private final String userId;
     private final Locale locale;
 }

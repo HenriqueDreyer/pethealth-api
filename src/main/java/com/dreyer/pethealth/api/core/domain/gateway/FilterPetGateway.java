@@ -6,8 +6,8 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface FilterPetGateway {
-    List<Pet> findByName(Long userId, String petName);
-    List<Pet> findByUser(Long userId);
+    List<Pet> findByName(String userId, String petName);
+    List<Pet> findByUser(String userId);
 
-    List<Pet> findAll(Pageable pageable, Long userId);
+    List<Pet> findAll(Pageable pageable, String userId);
 }
