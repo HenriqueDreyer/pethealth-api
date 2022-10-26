@@ -9,6 +9,7 @@ import com.dreyer.pethealth.api.core.boundary.requestmodel.FilterPetRequestModel
 import com.dreyer.pethealth.api.core.boundary.responsemodel.FilterPetResponseModel;
 import com.dreyer.pethealth.api.core.domain.entity.Pet;
 import com.dreyer.pethealth.api.core.domain.gateway.FilterPetGateway;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +19,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
+@Slf4j
 public class FilterPetUseCase implements FilterPetInput {
 
     private final FilterPetOutput filterPetOutput;

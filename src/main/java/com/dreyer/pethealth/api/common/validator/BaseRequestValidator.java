@@ -3,11 +3,13 @@ package com.dreyer.pethealth.api.common.validator;
 import com.dreyer.pethealth.api.common.boundary.requestmodel.BaseRequestModel;
 import com.dreyer.pethealth.api.common.boundary.responsemodel.ErrorResponseModel;
 import com.dreyer.pethealth.api.common.errorcode.CommonErrorCode;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Slf4j
 public class BaseRequestValidator {
     private BaseRequestValidator(){}
 
